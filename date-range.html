@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <!--framework -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--jquery -->
+    <script src="js/jquery-1.12.4.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <!--hightchart-->
+    <script src="js/highcharts.js"></script>
+    <script src="js/exporting.js"></script>
+    <!--js -->
+    <script src="js/main_code.js"></script>
+    <script>
+    function send() {
+        start = document.getElementById("from_date").value;
+        start_time = document.getElementById("from_time").value;
+        end = document.getElementById("to_date").value;
+        end_time = document.getElementById("to_time").value;
+        console.log(date2long(inputDate2date(start,start_time)));
+        //console.log("start : " + start + "  time :" + start_time);
+        //console.log("end : " + end + "  time : " + end_time);
+        //empty check
+        if (start == null || start == "" || start_time == null || start_time == "" || end == null || end == "" || end_time == null || end_time == "") {
+            alert("輸入完整時間");
+            return false;
+        }
+
+        //get data
+
+        //call chart 
+        js_createChart();
+
+
+    }
+
+    
+    </script>
+</head>
+
+<body>
+    <div class="col-lg-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <label for="from">From</label>
+                <input type="text" id="from_date" name="from_date">
+                <input type="time" id="from_time" name="from_time" value="00:00">
+                <label for="to">to</label>
+                <input type="text" id="to_date" name="to_date">
+                <input type="time" id="to_time" name="to_time" value="00:00">
+                <input type="button" value="click" onclick="send();" />
+            </div>
+            <div class="panel-body">
+                <div id="daily-chart"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
